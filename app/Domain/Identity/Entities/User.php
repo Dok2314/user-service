@@ -18,6 +18,16 @@ final class User
         $this->setName($name);
     }
 
+    public static function register(UserId $id, Email $email, string $name): self
+    {
+        return new self($id, $email, $name);
+    }
+
+    public function id(): UserId
+    {
+        return $this->id;
+    }
+
     public function email(): Email
     {
         return $this->email;
