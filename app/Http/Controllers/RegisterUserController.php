@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Application\Identity\RegisterUser\RegisterUserCommand;
-use App\Application\Identity\RegisterUser\RegisterUserHandler;
+use App\Application\Identity\Command\RegisterUser\RegisterUserCommand;
+use App\Application\Identity\Command\RegisterUser\RegisterUserHandler;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Resources\RegisterUserResource;
 use Illuminate\Http\JsonResponse;

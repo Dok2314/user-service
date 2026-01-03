@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Identity\RegisterUser;
+namespace App\Application\Identity\Command\RegisterUser;
 
 final readonly class RegisterUserCommand
 {

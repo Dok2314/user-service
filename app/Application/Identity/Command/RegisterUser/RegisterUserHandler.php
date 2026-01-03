@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Identity\RegisterUser;
+namespace App\Application\Identity\Command\RegisterUser;
 
 use App\Domain\Identity\Entities\User;
 use App\Domain\Identity\Repositories\UserRepository;
