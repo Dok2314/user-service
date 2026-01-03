@@ -7,8 +7,11 @@ namespace App\Application\Identity\RegisterUser;
 use App\Domain\Identity\Entities\User;
 use App\Domain\Identity\Repositories\UserRepository;
 use App\Domain\Identity\ValueObjects\Email;
+use App\Domain\Identity\ValueObjects\PasswordHash;
 use App\Domain\Identity\ValueObjects\UserId;
 use DomainException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 final readonly class RegisterUserHandler
 {
@@ -16,18 +19,30 @@ final readonly class RegisterUserHandler
 
     public function handle(RegisterUserCommand $command): UserId
     {
-        $email = Email::fromString($command->email);
+        return DB::transaction(function () use ($command) {
 
-        if ($this->users->isEmailTaken($email)) {
-            throw new DomainException('Email already taken');
-        }
+            $email = Email::fromString($command->email);
 
-        $id = UserId::new();
+            if ($this->users->isEmailTaken($email)) {
+                throw new DomainException('Email already taken');
+            }
 
-        $user = User::register($id, $email, $command->name);
+            $id = UserId::new();
 
-        $this->users->save($user);
+            $passwordHash = new PasswordHash(
+                Hash::make($command->password)
+            );
 
-        return $id;
+            $user = User::register(
+                $id,
+                $email,
+                $command->name,
+                $passwordHash
+            );
+
+            $this->users->save($user);
+
+            return $id;
+        });
     }
 }

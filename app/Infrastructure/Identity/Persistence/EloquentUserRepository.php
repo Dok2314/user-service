@@ -7,6 +7,7 @@ namespace App\Infrastructure\Identity\Persistence;
 use App\Domain\Identity\Entities\User as DomainUser;
 use App\Domain\Identity\Repositories\UserRepository;
 use App\Domain\Identity\ValueObjects\Email;
+use App\Domain\Identity\ValueObjects\PasswordHash;
 use App\Domain\Identity\ValueObjects\UserId;
 use App\Models\User as EloquentUser;
 
@@ -33,6 +34,7 @@ final class EloquentUserRepository implements UserRepository
             [
                 'email' => (string) $user->email(),
                 'name'  => $user->name(),
+                'password' => $user->passwordHash()
             ],
         );
     }
@@ -54,6 +56,7 @@ final class EloquentUserRepository implements UserRepository
             id: UserId::fromString((string) $model->id),
             email: Email::fromString((string) $model->email),
             name: (string) $model->name,
+            passwordHash: new PasswordHash((string) $model->password),
         );
     }
 }

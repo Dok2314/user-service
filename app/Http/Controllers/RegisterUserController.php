@@ -17,6 +17,7 @@ final class RegisterUserController
         $command = new RegisterUserCommand(
             email: $request->validated('email'),
             name: $request->validated('name'),
+            password: $request->validated('password')
         );
 
         $id = $handler->handle($command);
