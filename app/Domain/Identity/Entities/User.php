@@ -12,21 +12,23 @@ use InvalidArgumentException;
 final class User
 {
     public function __construct(
-        public readonly UserId $id,
-        private Email $email,
-        private string $name,
-        private PasswordHash $passwordHash,
-    ) {
+        public readonly UserId        $id,
+        private readonly PasswordHash $passwordHash,
+        private Email                 $email,
+        private string                $name,
+    )
+    {
         $this->setName($name);
     }
 
     public static function register(
-        UserId $id,
-        Email $email,
-        string $name,
+        UserId       $id,
         PasswordHash $passwordHash,
-    ): self {
-        return new self($id, $email, $name, $passwordHash);
+        Email        $email,
+        string       $name,
+    ): self
+    {
+        return new self($id, $passwordHash, $email, $name);
     }
 
     public function id(): UserId

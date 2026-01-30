@@ -2,16 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\UI\Http\Controllers;
 
 use App\Application\Identity\Command\RegisterUser\RegisterUserCommand;
 use App\Application\Identity\Command\RegisterUser\RegisterUserHandler;
-use App\Http\Requests\RegisterUserRequest;
-use App\Http\Resources\RegisterUserResource;
+use App\UI\Http\Requests\RegisterUserRequest;
+use App\UI\Http\Resources\RegisterUserResource;
 use Illuminate\Http\JsonResponse;
+use Throwable;
 
 final class RegisterUserController
 {
+    /**
+     * @throws Throwable
+     */
     public function __invoke(RegisterUserRequest $request, RegisterUserHandler $handler): JsonResponse
     {
         $command = new RegisterUserCommand(

@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 readonly final class PasswordHash
 {
-    public string $value;
+    private string $value;
 
     public function __construct(string $value)
     {

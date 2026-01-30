@@ -9,7 +9,7 @@ use App\Domain\Identity\Repositories\UserRepository;
 use App\Domain\Identity\ValueObjects\Email;
 use App\Domain\Identity\ValueObjects\PasswordHash;
 use App\Domain\Identity\ValueObjects\UserId;
-use App\Models\User as EloquentUser;
+use App\Infrastructure\Identity\Persistence\Models\User as EloquentUser;
 
 final class EloquentUserRepository implements UserRepository
 {

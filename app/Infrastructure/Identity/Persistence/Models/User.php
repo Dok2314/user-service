@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Infrastructure\Identity\Persistence\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -21,6 +21,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
