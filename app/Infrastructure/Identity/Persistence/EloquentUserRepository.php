@@ -54,9 +54,9 @@ final class EloquentUserRepository implements UserRepository
     {
         return new DomainUser(
             id: UserId::fromString((string) $model->id),
+            passwordHash: new PasswordHash((string) $model->password),
             email: Email::fromString((string) $model->email),
             name: (string) $model->name,
-            passwordHash: new PasswordHash((string) $model->password),
         );
     }
 }
