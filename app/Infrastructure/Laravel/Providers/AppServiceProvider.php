@@ -2,16 +2,13 @@
 
 namespace App\Infrastructure\Laravel\Providers;
 
+use App\Infrastructure\Identity\Adapters\SanctumTokenIssuer;
 use App\Application\Shared\Bus\Command\{
     CommandBus,
     HandlerResolver
 };
 
-use App\Application\Shared\Ports\{
-    IdGenerator,
-    PasswordHasher,
-    TransactionManager
-};
+use App\Application\Shared\Ports\{IdGenerator, PasswordHasher, TokenIssuer, TransactionManager};
 
 use App\Infrastructure\Shared\Adapters\{
     LaravelPasswordHasher,
@@ -41,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PasswordHasher::class, LaravelPasswordHasher::class);
         $this->app->bind(HandlerResolver::class, LaravelContainerHandlerResolver::class);
         $this->app->bind(CommandBus::class, SyncCommandBus::class);
+        $this->app->bind(TokenIssuer::class, SanctumTokenIssuer::class);
     }
 
     /**

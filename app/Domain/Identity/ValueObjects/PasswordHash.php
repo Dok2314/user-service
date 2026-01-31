@@ -6,7 +6,7 @@ namespace App\Domain\Identity\ValueObjects;
 
 use InvalidArgumentException;
 
-readonly final class PasswordHash
+final readonly class PasswordHash
 {
     private string $value;
 
@@ -17,6 +17,11 @@ readonly final class PasswordHash
         }
 
         $this->value = $value;
+    }
+
+    public function value(): string
+    {
+        return $this->value;
     }
 
     public function __toString(): string
