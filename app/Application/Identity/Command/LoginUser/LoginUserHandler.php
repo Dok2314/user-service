@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Application\Identity\Command\LoginUser;
 
-use App\Application\Shared\Ports\PasswordHasher;
-use App\Application\Shared\Ports\TokenIssuer;
+use App\Application\Shared\Ports\{
+    PasswordHasher,
+    TokenIssuer
+};
+
 use App\Domain\Identity\Repositories\UserRepository;
 use App\Domain\Identity\ValueObjects\Email;
 use DomainException;
