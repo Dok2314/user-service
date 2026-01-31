@@ -2,19 +2,31 @@
 
 namespace App\Infrastructure\Laravel\Providers;
 
-use App\Application\Shared\Bus\Command\CommandBus;
-use App\Application\Shared\Bus\Command\HandlerResolver;
-use App\Application\Shared\Ports\IdGenerator;
-use App\Application\Shared\Ports\PasswordHasher;
-use App\Application\Shared\Ports\TransactionManager;
+use App\Application\Shared\Bus\Command\{
+    CommandBus,
+    HandlerResolver
+};
+
+use App\Application\Shared\Ports\{
+    IdGenerator,
+    PasswordHasher,
+    TransactionManager
+};
+
+use App\Infrastructure\Shared\Adapters\{
+    LaravelPasswordHasher,
+    LaravelTransactionManager,
+    StrUuidIdGenerator
+};
+
+use App\Infrastructure\Shared\Bus\Command\{
+    LaravelContainerHandlerResolver,
+    SyncCommandBus
+};
+
+use Illuminate\Support\ServiceProvider;
 use App\Domain\Identity\Repositories\UserRepository;
 use App\Infrastructure\Identity\Persistence\EloquentUserRepository;
-use App\Infrastructure\Shared\Adapters\LaravelPasswordHasher;
-use App\Infrastructure\Shared\Adapters\LaravelTransactionManager;
-use App\Infrastructure\Shared\Adapters\StrUuidIdGenerator;
-use App\Infrastructure\Shared\Bus\Command\LaravelContainerHandlerResolver;
-use App\Infrastructure\Shared\Bus\Command\SyncCommandBus;
-use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

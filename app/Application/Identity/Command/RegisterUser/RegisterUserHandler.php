@@ -4,14 +4,20 @@ declare(strict_types=1);
 
 namespace App\Application\Identity\Command\RegisterUser;
 
-use App\Application\Shared\Ports\IdGenerator;
-use App\Application\Shared\Ports\PasswordHasher;
-use App\Application\Shared\Ports\TransactionManager;
+use App\Application\Shared\Ports\{
+    IdGenerator,
+    PasswordHasher,
+    TransactionManager
+};
+
+use App\Domain\Identity\ValueObjects\{
+    Email,
+    PasswordHash,
+    UserId
+};
+
 use App\Domain\Identity\Entities\User;
 use App\Domain\Identity\Repositories\UserRepository;
-use App\Domain\Identity\ValueObjects\Email;
-use App\Domain\Identity\ValueObjects\PasswordHash;
-use App\Domain\Identity\ValueObjects\UserId;
 use DomainException;
 
 final readonly class RegisterUserHandler

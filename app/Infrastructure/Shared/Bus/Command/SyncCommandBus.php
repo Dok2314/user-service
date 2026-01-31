@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Shared\Bus\Command;
 
-use App\Application\Shared\Bus\Command\Command;
-use App\Application\Shared\Bus\Command\CommandBus;
-use App\Application\Shared\Bus\Command\HandlerResolver;
+use App\Application\Shared\Bus\Command\{
+    Command,
+    CommandBus,
+    HandlerResolver
+};
 use RuntimeException;
 
 final readonly class SyncCommandBus implements CommandBus

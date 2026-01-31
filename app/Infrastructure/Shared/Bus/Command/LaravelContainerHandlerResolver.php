@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Shared\Bus\Command;
 
-use App\Application\Shared\Bus\Command\Command;
-use App\Application\Shared\Bus\Command\HandlerResolver;
+use App\Application\Shared\Bus\Command\{
+    Command,
+    HandlerResolver
+};
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use RuntimeException;
