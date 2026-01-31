@@ -6,8 +6,8 @@ namespace App\UI\Http\Controllers\Identity;
 
 use App\Application\Identity\Command\RegisterUser\RegisterUserCommand;
 use App\UI\Http\Controllers\BaseController;
-use App\UI\Http\Requests\RegisterUserRequest;
-use App\UI\Http\Resources\RegisterUserResource;
+use App\UI\Http\Requests\Identity\RegisterUserRequest;
+use App\UI\Http\Resources\Identity\RegisterUserResource;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 

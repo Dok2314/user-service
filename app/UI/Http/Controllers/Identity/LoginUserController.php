@@ -4,8 +4,8 @@ namespace App\UI\Http\Controllers\Identity;
 
 use App\Application\Identity\Command\LoginUser\LoginUserCommand;
 use App\UI\Http\Controllers\BaseController;
-use App\UI\Http\Requests\LoginUserRequest;
-use App\UI\Http\Resources\LoginUserResource;
+use App\UI\Http\Requests\Identity\LoginUserRequest;
+use App\UI\Http\Resources\Identity\LoginUserResource;
 
 final class LoginUserController extends BaseController
 {

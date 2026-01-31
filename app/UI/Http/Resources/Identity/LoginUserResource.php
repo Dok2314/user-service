@@ -1,11 +1,11 @@
 <?php
 
-namespace App\UI\Http\Resources;
+namespace App\UI\Http\Resources\Identity;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RegisterUserResource extends JsonResource
+class LoginUserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class RegisterUserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => (string) $this->resource,
+            'token' => $this->resource['token'],
         ];
     }
 }
