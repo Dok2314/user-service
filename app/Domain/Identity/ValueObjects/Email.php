@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 readonly final class Email
 {
-    public string $value;
+    private string $value;
 
     public function __construct(string $value)
     {
